@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.arslan2012/qpost-mcp",
+  "description": "MCP server for QPost — lets AI agents schedule and publish video/image posts to YouTube, TikTok, and Instagram.",
+  "repository": {
+    "url": "https://github.com/arslan2012/qpost-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "qpost-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "QPOST_API_KEY",
+          "description": "API key from your QPost dashboard (Settings > API Keys)",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "QPOST_BASE_URL",
+          "description": "QPost instance URL, for self-hosted deployments (defaults to https://qpost.dev)",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

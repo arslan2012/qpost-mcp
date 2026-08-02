@@ -1,0 +1,23 @@
+{
+  "mcp_directories": {
+    "mcp.so": "pending",
+    "smithery": "pending",
+    "glama": "pending",
+    "pulsemcp": "pending",
+    "awesome-mcp-servers-pr": "pending"
+  },
+  "npm_published": false,
+  "reddit_api_configured": false,
+  "x_api_configured": false,
+  "board_posts": {
+    "show_hn": null,
+    "product_hunt": null,
+    "reddit_ai_agents": null,
+    "reddit_mcp": null,
+    "reddit_sideproject": null,
+    "reddit_saas": null,
+    "x_thread": null
+  },
+  "notes": "board_posts values are ISO dates of last post to that channel, or null if never posted. Only post to a channel that is null or >=7 days old, and cap at 2-3 new board posts per week total across all channels combined.",
+  "last_run": null
+}
