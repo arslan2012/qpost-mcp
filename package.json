@@ -1,0 +1,47 @@
+{
+  "name": "qpost-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for QPost — lets AI agents schedule and publish video/image posts to YouTube, TikTok, and Instagram.",
+  "type": "module",
+  "bin": {
+    "qpost-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "qpost",
+    "social-media",
+    "ai-agent",
+    "youtube",
+    "tiktok",
+    "instagram"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arslan2012/qpost-mcp.git"
+  },
+  "homepage": "https://qpost.dev",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
