@@ -1,47 +1,55 @@
-# Publishing checklist (manual — needs your accounts)
+# Publishing
 
-Everything code-side is ready (`npm run build` passes, `server.json` and
-`mcpName` are set). These last steps need your own npm and GitHub logins —
-I can't create accounts or hold your credentials, so run these yourself:
+Both registries are live at **0.2.0** as of 2026-08-03:
 
-## 1. Publish to npm
+- npm: https://www.npmjs.com/package/qpost-mcp
+- MCP registry: `io.github.arslan2012/qpost-mcp` (marked `isLatest`)
 
-```bash
-cd /Users/arslan/Projects/qpost-mcp
-npm login          # if not already logged in
-npm publish --access public
-```
+Smithery, Glama, PulseMCP, and mcp.so all ingest from the official MCP
+registry, so publishing there is what propagates to the directories — they
+no longer take direct submissions.
 
-Verify at https://www.npmjs.com/package/qpost-mcp
+## Cutting a release
 
-## 2. Publish to the official MCP Registry
-
-This is what makes `qpost-mcp` show up in Smithery, Glama, PulseMCP, mcp.so,
-and Claude's own MCP directory — they all ingest from this registry now
-instead of taking direct submissions.
+Preferred, once the trusted publisher is linked (see below) — CI publishes
+via OIDC with no token anywhere, and npm attaches a provenance attestation:
 
 ```bash
-# macOS
-brew install mcp-publisher
-
-mcp-publisher login github     # opens a device-code flow in your browser
-mcp-publisher publish          # reads server.json in this directory
+npm version patch -m "v%s"     # keep server.json's two version fields in sync
+git push --follow-tags
 ```
 
-Verify:
+The workflow refuses to publish if the tag doesn't match `package.json`.
+
+Publishing from a laptop also works, using the granular token in `~/.npmrc`:
+
 ```bash
-curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.arslan2012/qpost-mcp"
+npm run build && npm publish --access public
 ```
 
-## 3. (Optional, later) Open a PR to awesome-mcp-servers
+Then sync the MCP registry (update `version` in **both** places in
+`server.json` first):
 
-Once published, a PR to https://github.com/punkpeye/awesome-mcp-servers
-adding a line under an appropriate category (Social Media / Content) — I
-can draft and open this PR for you once steps 1-2 are done, since at that
-point it's just a public README edit with no credentials needed.
+```bash
+mcp-publisher publish
+```
 
----
+`mcp-publisher`'s GitHub login is time-limited and expires; when it does,
+`publish` fails with `Invalid or expired Registry JWT token`. Re-auth with
+`mcp-publisher login github` and complete the device-code prompt in a browser.
 
-After step 1 and 2, tell me and I'll flip `growth-ops-state.json`'s
-`npm_published` flag and update the daily growth-ops task so it starts
-tracking directory listing status and stops reminding you about this.
+## Outstanding
+
+Link the trusted publisher at
+https://www.npmjs.com/package/qpost-mcp/access → Trusted Publisher:
+
+| Field | Value |
+| --- | --- |
+| Organization or user | `arslan2012` |
+| Repository | `qpost-mcp` |
+| Workflow filename | `publish.yml` |
+| Environment | *(blank)* |
+
+Until that's linked, `.github/workflows/publish.yml` falls back to token auth
+and releases get no provenance badge. Keep the granular npm token regardless —
+trusted publishing only covers CI, not local publishes.

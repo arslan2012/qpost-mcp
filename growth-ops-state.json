@@ -1,19 +1,26 @@
 {
-  "mcp_directories": {
-    "official_registry": "published 2026-08-03 as io.github.arslan2012/qpost-mcp",
+  "distribution": {
+    "official_registry": "0.2.0 published 2026-08-03 (io.github.arslan2012/qpost-mcp, isLatest)",
+    "npm": "0.2.0 published 2026-08-03",
     "mcp.so": "auto-ingesting from official registry",
     "smithery": "auto-ingesting from official registry",
     "glama": "auto-ingesting from official registry",
     "pulsemcp": "auto-ingesting from official registry (ingests daily, processes weekly)",
-    "awesome-mcp-servers-pr": "pending"
+    "awesome-mcp-servers-pr": "OPEN, not merged: https://github.com/punkpeye/awesome-mcp-servers/pull/11416"
   },
-  "npm_published": true,
-  "npm_url": "https://www.npmjs.com/package/qpost-mcp",
+  "product": {
+    "hosted_mcp_endpoint": "https://qpost.dev/mcp — live 2026-08-03, Streamable HTTP, stateless, x-api-key auth",
+    "stdio_install": "npx -y qpost-mcp",
+    "positioning": "video publishing for AI agents (YouTube/TikTok/Instagram). NOT 'self-hostable' — publishing needs TikTok/IG/YouTube app approvals a self-hoster cannot get."
+  },
+  "blocked_on_arslan": [
+    "Link npm trusted publisher at https://www.npmjs.com/package/qpost-mcp/access (arslan2012 / qpost-mcp / publish.yml, env blank). Until then .github/workflows/publish.yml falls back to token auth and there is no provenance badge."
+  ],
   "browser_logins": {
-    "hacker_news": "logged in as arslan2012 (browser automation works, no API needed)",
-    "reddit": "logged in (browser automation works, no API needed)",
-    "github": "NOT logged in in Chrome; use gh CLI locally instead",
-    "x_twitter": "unknown - check before attempting"
+    "hacker_news": "logged in as arslan2012",
+    "reddit": "logged in",
+    "github": "use gh CLI locally; Chrome may not be logged in",
+    "x_twitter": "unknown — check before attempting"
   },
   "board_posts": {
     "show_hn": "2026-08-03",
@@ -25,9 +32,12 @@
     "x_thread": null
   },
   "hn_history": [
-    "2026-08-03: https://news.ycombinator.com/item?id=49150574 - Show HN: I gave my social scheduler an MCP server so AI agents can post",
+    "2026-08-03: item 49150574 — FLAGGED within minutes and delete window expired. Likely cause: submitted as a text post rather than a link post. Do NOT repost or delete-and-repost; that reads as flag evasion.",
     "~2026-02: two earlier Show HN posts, both 1 point, no traction"
   ],
-  "notes": "board_posts values are ISO dates of last post to that channel. Reddit posts may go out automatically (max 2/week, never 2 subreddits same day). HN requires a genuinely new milestone and Arslan-level judgment - do NOT post to HN routinely; he has only 3 lifetime submissions and burning the account on repetitive promo would be costly.",
+  "competitive_reality": "Social Media MCP category has ~46 entries; 9 other servers also cover all three of TikTok+Instagram+YouTube, and 33 of 46 offer a hosted option. npm leaders do only 332-871 installs/month. Demand is real but modest — do not over-promise traction.",
+  "key_metric": "Signups and API-key creations. Traffic is NOT the bottleneck (~47 real homepage visitors/day per nginx logs); conversion was. The 'Create your free account' CTA + /login?mode=signup deep link went live 2026-08-03 — watch whether signups move.",
+  "traffic_baseline_2026_08_03": "~47 unique real homepage IPs/day. /docs had ~0 real human traffic (its hits were attack scanners). 18 total users, last organic signup 2026-05-13.",
+  "notes": "board_posts values are ISO dates of last post to that channel. Reddit posts may go out automatically (max 2/week, never 2 subreddits the same day). HN needs a genuinely new milestone and Arslan-level judgment — he has few lifetime submissions and one is already flagged.",
   "last_run": null
 }
