@@ -9,10 +9,14 @@
   },
   "npm_published": true,
   "npm_url": "https://www.npmjs.com/package/qpost-mcp",
-  "reddit_api_configured": false,
-  "x_api_configured": false,
+  "browser_logins": {
+    "hacker_news": "logged in as arslan2012 (browser automation works, no API needed)",
+    "reddit": "logged in (browser automation works, no API needed)",
+    "github": "NOT logged in in Chrome; use gh CLI locally instead",
+    "x_twitter": "unknown - check before attempting"
+  },
   "board_posts": {
-    "show_hn": null,
+    "show_hn": "2026-08-03",
     "product_hunt": null,
     "reddit_ai_agents": null,
     "reddit_mcp": null,
@@ -20,6 +24,10 @@
     "reddit_saas": null,
     "x_thread": null
   },
-  "notes": "board_posts values are ISO dates of last post to that channel, or null if never posted. Only post to a channel that is null or >=7 days old, and cap at 2-3 new board posts per week total across all channels combined. Arslan has posted to HN before under his own account - space out any new Show HN and only post genuinely updated work.",
+  "hn_history": [
+    "2026-08-03: https://news.ycombinator.com/item?id=49150574 - Show HN: I gave my social scheduler an MCP server so AI agents can post",
+    "~2026-02: two earlier Show HN posts, both 1 point, no traction"
+  ],
+  "notes": "board_posts values are ISO dates of last post to that channel. Reddit posts may go out automatically (max 2/week, never 2 subreddits same day). HN requires a genuinely new milestone and Arslan-level judgment - do NOT post to HN routinely; he has only 3 lifetime submissions and burning the account on repetitive promo would be costly.",
   "last_run": null
 }
