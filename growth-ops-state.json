@@ -54,5 +54,11 @@
   ],
   "positioning_2026_08_04": "Pivoted from 'AI agent autonomy' to 'we hold the TikTok/IG/YouTube publishing approvals you'd wait weeks for'. Driven by data: 1 API key across 18 users means the agent thesis was unvalidated, while the approvals are genuinely scarce. New SEO page: https://qpost.dev/guides/publishing-api-access",
   "billing": "Stripe fully built but DORMANT by Arslan's decision (no customers yet, so no point activating). Activates by adding STRIPE_SECRET_KEY + STRIPE_PRICE_ID_PRO + STRIPE_WEBHOOK_SECRET to /var/www/qpost/.env. Pricing page live at /pricing showing Free 25/mo and Pro $12/mo 'Coming soon'.",
-  "scheduled_task_limits": "This task runs HEADLESS and cannot drive Arslan's logged-in Chrome, so it CANNOT post to Reddit/HN/X. Do not try. It CAN read Reddit via the public .json endpoints with no auth — use that to monitor replies and surface them for Arslan to answer."
+  "scheduled_task_limits": "Runs HEADLESS; cannot drive Arslan's logged-in Chrome, so it CANNOT post to Reddit/HN/X. Reddit also blocks anonymous .json AND .rss (403 as of 2026-08-04), so it cannot read Reddit either. Both are expected, not malfunctions.",
+  "seo_2026_08_05": {
+    "cloudflare_ai_crawlers": "UNBLOCKED 2026-08-05. Was: 'Block AI bots' scope = 'Block on all pages' (WAF) + 'Managed robots.txt' ON, which together blocked GPTBot/ClaudeBot/Google-Extended/CCBot/etc. Both turned off; robots.txt is now the repo's own file with no AI blocks.",
+    "search_console": "Domain property sc-domain:qpost.dev VERIFIED 2026-08-05 via DNS TXT (google-site-verification, added as @ TXT in Cloudflare). Sitemap https://qpost.dev/sitemap-index.xml submitted.",
+    "indexing_status": "CRITICAL FINDING: both https://qpost.dev/ and /guides/publishing-api-access reported 'URL is unknown to Google' — the site was essentially not in Google's index, which explains zero organic signups. Indexing requested for both (priority crawl queue) on 2026-08-05.",
+    "next_check": "Re-inspect both URLs in Search Console in a few days. If still unindexed after ~1 week, investigate further. Sitemap showed 'Couldn't fetch' immediately after submission — that is normal initially; the sitemap itself returns HTTP 200 with valid XML to Googlebot, verified."
+  }
 }
