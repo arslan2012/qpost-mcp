@@ -6,12 +6,28 @@
     "url": "https://github.com/arslan2012/qpost-mcp",
     "source": "github"
   },
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "websiteUrl": "https://qpost.dev",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://qpost.dev/mcp",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "description": "API key from your QPost dashboard (Settings > API Keys)",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ],
   "packages": [
     {
       "registryType": "npm",
       "identifier": "qpost-mcp",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "transport": {
         "type": "stdio"
       },

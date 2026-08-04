@@ -1,6 +1,6 @@
 {
   "name": "qpost-mcp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "MCP server for QPost — lets AI agents publish video and image posts to YouTube, TikTok, Instagram.",
   "mcpName": "io.github.arslan2012/qpost-mcp",
   "type": "module",

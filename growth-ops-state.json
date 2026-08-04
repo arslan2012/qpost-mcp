@@ -1,7 +1,7 @@
 {
   "distribution": {
-    "official_registry": "0.2.0 published 2026-08-03 (io.github.arslan2012/qpost-mcp, isLatest)",
-    "npm": "0.2.0 published 2026-08-03",
+    "official_registry": "0.2.0 published 2026-08-03 (io.github.arslan2012/qpost-mcp, isLatest) — check for 0.3.0 update next run",
+    "npm": "0.3.0 published 2026-08-03 (bumped from 0.2.0 same day; npm downloads API returns 'not found' for the package even though registry.npmjs.org confirms it exists — likely just not indexed yet for such a new/low-traffic package)",
     "mcp.so": "auto-ingesting from official registry",
     "smithery": "auto-ingesting from official registry",
     "glama": "auto-ingesting from official registry",
@@ -25,7 +25,7 @@
   "board_posts": {
     "show_hn": "2026-08-03",
     "product_hunt": null,
-    "reddit_ai_agents": null,
+    "reddit_ai_agents": "2026-08-04",
     "reddit_mcp": null,
     "reddit_sideproject": null,
     "reddit_saas": null,
@@ -39,5 +39,20 @@
   "key_metric": "Signups and API-key creations. Traffic is NOT the bottleneck (~47 real homepage visitors/day per nginx logs); conversion was. The 'Create your free account' CTA + /login?mode=signup deep link went live 2026-08-03 — watch whether signups move.",
   "traffic_baseline_2026_08_03": "~47 unique real homepage IPs/day. /docs had ~0 real human traffic (its hits were attack scanners). 18 total users, last organic signup 2026-05-13.",
   "notes": "board_posts values are ISO dates of last post to that channel. Reddit posts may go out automatically (max 2/week, never 2 subreddits the same day). HN needs a genuinely new milestone and Arslan-level judgment — he has few lifetime submissions and one is already flagged.",
-  "last_run": null
+  "last_run": "2026-08-04",
+  "last_run_log": [
+    "2026-08-04: First automated run. pm2 qpost online (23h uptime, 43 restarts total historically — logs show normal cron/deploy activity, not crash-looping). MCP endpoint 401 (correct), homepage 200. DB: still 18 total users, 1 API key, ZERO new signups/keys since the 2026-08-03 conversion fix went live (0 since 08-03, last organic signup still 2026-05-13). npm registry shows qpost-mcp bumped to 0.3.0 same day as 0.2.0 (state file was stale); npm downloads API 404s on the package despite registry.npmjs.org confirming it exists — likely an indexing lag, not a real problem. awesome-mcp-servers PR #11416 still OPEN, not merged. .secrets.env absent — no Reddit/X posting capability, no board post made this run (last was Show HN 2026-08-03)."
+  ],
+  "reddit_posts": [
+    {
+      "date": "2026-08-04",
+      "sub": "r/AI_Agents",
+      "url": "https://old.reddit.com/r/AI_Agents/comments/1vf2a9v/",
+      "json": "https://old.reddit.com/r/AI_Agents/comments/1vf2a9v/.json",
+      "angle": "platform approval barrier (TikTok private-mode gotcha, IG business verification, YouTube quota); link in first comment per sub rule 3"
+    }
+  ],
+  "positioning_2026_08_04": "Pivoted from 'AI agent autonomy' to 'we hold the TikTok/IG/YouTube publishing approvals you'd wait weeks for'. Driven by data: 1 API key across 18 users means the agent thesis was unvalidated, while the approvals are genuinely scarce. New SEO page: https://qpost.dev/guides/publishing-api-access",
+  "billing": "Stripe fully built but DORMANT by Arslan's decision (no customers yet, so no point activating). Activates by adding STRIPE_SECRET_KEY + STRIPE_PRICE_ID_PRO + STRIPE_WEBHOOK_SECRET to /var/www/qpost/.env. Pricing page live at /pricing showing Free 25/mo and Pro $12/mo 'Coming soon'.",
+  "scheduled_task_limits": "This task runs HEADLESS and cannot drive Arslan's logged-in Chrome, so it CANNOT post to Reddit/HN/X. Do not try. It CAN read Reddit via the public .json endpoints with no auth — use that to monitor replies and surface them for Arslan to answer."
 }
