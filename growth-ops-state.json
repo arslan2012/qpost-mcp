@@ -39,9 +39,10 @@
   "key_metric": "Signups and API-key creations. Traffic is NOT the bottleneck (~47 real homepage visitors/day per nginx logs); conversion was. The 'Create your free account' CTA + /login?mode=signup deep link went live 2026-08-03 — watch whether signups move.",
   "traffic_baseline_2026_08_03": "~47 unique real homepage IPs/day. /docs had ~0 real human traffic (its hits were attack scanners). 18 total users, last organic signup 2026-05-13.",
   "notes": "board_posts values are ISO dates of last post to that channel. Reddit posts may go out automatically (max 2/week, never 2 subreddits the same day). HN needs a genuinely new milestone and Arslan-level judgment — he has few lifetime submissions and one is already flagged.",
-  "last_run": "2026-08-04",
+  "last_run": "2026-08-05",
   "last_run_log": [
-    "2026-08-04: First automated run. pm2 qpost online (23h uptime, 43 restarts total historically — logs show normal cron/deploy activity, not crash-looping). MCP endpoint 401 (correct), homepage 200. DB: still 18 total users, 1 API key, ZERO new signups/keys since the 2026-08-03 conversion fix went live (0 since 08-03, last organic signup still 2026-05-13). npm registry shows qpost-mcp bumped to 0.3.0 same day as 0.2.0 (state file was stale); npm downloads API 404s on the package despite registry.npmjs.org confirming it exists — likely an indexing lag, not a real problem. awesome-mcp-servers PR #11416 still OPEN, not merged. .secrets.env absent — no Reddit/X posting capability, no board post made this run (last was Show HN 2026-08-03)."
+    "2026-08-04: First automated run. pm2 qpost online (23h uptime, 43 restarts total historically — logs show normal cron/deploy activity, not crash-looping). MCP endpoint 401 (correct), homepage 200. DB: still 18 total users, 1 API key, ZERO new signups/keys since the 2026-08-03 conversion fix went live (0 since 08-03, last organic signup still 2026-05-13). npm registry shows qpost-mcp bumped to 0.3.0 same day as 0.2.0 (state file was stale); npm downloads API 404s on the package despite registry.npmjs.org confirming it exists — likely an indexing lag, not a real problem. awesome-mcp-servers PR #11416 still OPEN, not merged. .secrets.env absent — no Reddit/X posting capability, no board post made this run (last was Show HN 2026-08-03).",
+    "2026-08-05: pm2 qpost online (17h uptime, 49 restarts historically, up from 43 — consistent with a deploy, not crash-looping). Health checks all correct: home 200, guide 200, /mcp 401. DB: still 18 total users, 1 API key, ZERO new signups/keys since 2026-08-04. npm downloads API now resolving (was 404 yesterday): 415 downloads last week (2026-07-28 to 2026-08-03) — first real npm number, plausibly includes CI/mirror traffic, still no spin needed. Guide page (/guides/publishing-api-access) got 79 nginx hits total since last check, but all 8 'google' matches were Google-InspectionTool/Googlebot crawler hits (from the 2026-08-05 manual indexing request), not organic search referrers — indexing/crawling is happening but no organic search traffic has landed yet. awesome-mcp-servers PR #11416 still OPEN, not merged. Reddit read/post still blocked as documented; no board post attempted."
   ],
   "reddit_posts": [
     {
@@ -49,7 +50,8 @@
       "sub": "r/AI_Agents",
       "url": "https://old.reddit.com/r/AI_Agents/comments/1vf2a9v/",
       "json": "https://old.reddit.com/r/AI_Agents/comments/1vf2a9v/.json",
-      "angle": "platform approval barrier (TikTok private-mode gotcha, IG business verification, YouTube quota); link in first comment per sub rule 3"
+      "angle": "platform approval barrier (TikTok private-mode gotcha, IG business verification, YouTube quota); link in first comment per sub rule 3",
+      "engagement": "1 genuine reply (2026-08-05) from u/Apprehensive-Run7844: TikTok audit rejected them because the demo video showed only first-time auth, not the consent screen after a token refresh; passed on second attempt. Replied thanking them and asking about resubmission turnaround. Insight folded into the guide as a callout + FAQ entry (paraphrased, unattributed as offered)."
     }
   ],
   "positioning_2026_08_04": "Pivoted from 'AI agent autonomy' to 'we hold the TikTok/IG/YouTube publishing approvals you'd wait weeks for'. Driven by data: 1 API key across 18 users means the agent thesis was unvalidated, while the approvals are genuinely scarce. New SEO page: https://qpost.dev/guides/publishing-api-access",
@@ -59,6 +61,10 @@
     "cloudflare_ai_crawlers": "UNBLOCKED 2026-08-05. Was: 'Block AI bots' scope = 'Block on all pages' (WAF) + 'Managed robots.txt' ON, which together blocked GPTBot/ClaudeBot/Google-Extended/CCBot/etc. Both turned off; robots.txt is now the repo's own file with no AI blocks.",
     "search_console": "Domain property sc-domain:qpost.dev VERIFIED 2026-08-05 via DNS TXT (google-site-verification, added as @ TXT in Cloudflare). Sitemap https://qpost.dev/sitemap-index.xml submitted.",
     "indexing_status": "CRITICAL FINDING: both https://qpost.dev/ and /guides/publishing-api-access reported 'URL is unknown to Google' — the site was essentially not in Google's index, which explains zero organic signups. Indexing requested for both (priority crawl queue) on 2026-08-05.",
-    "next_check": "Re-inspect both URLs in Search Console in a few days. If still unindexed after ~1 week, investigate further. Sitemap showed 'Couldn't fetch' immediately after submission — that is normal initially; the sitemap itself returns HTTP 200 with valid XML to Googlebot, verified."
+    "next_check": "Re-inspect both URLs in Search Console in a few days. If still unindexed after ~1 week, investigate further. Sitemap showed 'Couldn't fetch' immediately after submission — that is normal initially; the sitemap itself returns HTTP 200 with valid XML to Googlebot, verified.",
+    "sitemap_status": "RESOLVED: Search Console now shows 'Success', 6 discovered pages (the earlier 'Couldn't fetch' was just Google's pre-processing placeholder).",
+    "crawler_evidence_after_unblock": "nginx 2026-08-05: ClaudeBot 16 hits, GPTBot 1, OAI-SearchBot 2, Googlebot 11, Google-InspectionTool 11, guide page 77 hits. ClaudeBot/GPTBot were BLOCKED before the Cloudflare change, so this is direct proof the unblock worked.",
+    "canonical_fix": "Added rel=canonical + og:url site-wide 2026-08-05. /pricing and /pricing/ both returned 200 (duplicate content); both now canonicalise to the trailing-slash form matching the sitemap.",
+    "subdomains_checked": "staging.qpost.dev serves default nginx and has robots Disallow:/ (safe). ft.qpost.dev serves default nginx with no robots.txt — harmless thin content, low priority. www.qpost.dev 301-redirects correctly."
   }
 }
