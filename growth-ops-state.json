@@ -62,6 +62,14 @@
       "url": "https://old.reddit.com/r/AI_Agents/comments/1va08fz/best_way_to_schedule_social_media_posts_from/",
       "context": "OP compared 6 social MCP tools and asked 'especially interested if anyone solved TikTok properly!'. Three founders had left thin 'we have an MCP too' plugs, all at 0-1 points; OP replied 'Is it an AI reply or what' to a generic one. Answered the TikTok question substantively instead (private-mode trap, audited-client credential problem, why platform counts mislead), disclosed qpost openly, linked the guide once, asked a real question back.",
       "engagement": "posted, 1 point at time of writing"
+    },
+    {
+      "date": "2026-08-10",
+      "sub": "r/buildinpublic",
+      "type": "helpful answer on someone else's problem (no link, minimal disclosure)",
+      "url": "https://old.reddit.com/r/buildinpublic/comments/1tr39l2/tiktok_were_sorry_to_inform_you_that_your_app_did/",
+      "context": "u/harshalone rejected from TikTok audit for 'did not follow UX Guidelines / showcase full interactions between privacy and interaction settings' and confused what that means. Only 2 comments, neither answered. Read TikTok's actual content-sharing-guidelines first, then gave the 5 concrete causes: privacy dropdown must have NO default; Comment/Duet/Stitch must all start OFF; demo video must follow Point 1-5 order; creator_info must be live-fetched not mocked; branded content must block 'Only me' with the exact required message. Also passed on the token-refresh insight. Deliberately did NOT link qpost — disclosed running a service and left it there.",
+      "engagement": "posted, live"
     }
   ],
   "positioning_2026_08_04": "Pivoted from 'AI agent autonomy' to 'we hold the TikTok/IG/YouTube publishing approvals you'd wait weeks for'. Driven by data: 1 API key across 18 users means the agent thesis was unvalidated, while the approvals are genuinely scarce. New SEO page: https://qpost.dev/guides/publishing-api-access",
@@ -81,5 +89,6 @@
     "status": "INDEXED. site:qpost.dev now returns 6 pages incl. /guides/publishing-api-access, /docs, /, /terms, /privacy, /login. Search Console: 6 indexed, 10 not indexed (3 redirects = www, 5 'Discovered', 2 'Crawled - currently not indexed'). Sitemap = Success, 6 discovered pages. The 2026-08-05 'unknown to Google' problem is RESOLVED.",
     "ranking_reality": "Indexed does NOT mean ranking. Checked 'why are my tiktok api posts private' — page 1 is developers.tiktok.com (x3), Postiz docs, Blotato blog, Reddit. qpost.dev absent. Competing with TikTok's own docs on informational queries is not winnable for a new domain.",
     "key_insight": "The REDDIT POST ranks on Google page 1 for 'api to post to tiktok instagram and youtube for developers' while qpost.dev does not. Reddit's domain authority outranks a new site. Community comments are currently a better ranking vehicle than the site itself — prioritise answering real threads over publishing more pages."
-  }
+  },
+  "community_strategy": "VALIDATED APPROACH (2026-08-10): answering real questions outranks and outperforms promo posts. Evidence: the 2026-08-04 post ranks Google page 1 for 'api to post to tiktok instagram and youtube for developers' while qpost.dev does not. In competitor-comparison threads, thin 'we have an MCP too' plugs from 3 founders all sat at 0-1 points and the OP called one out as an AI reply. Method that works: find threads via GOOGLE (site:reddit.com ...) because Reddit's own search returns a firehose; read the actual platform docs before answering so specifics are correct; answer the question fully; disclose openly; link at most once, sometimes not at all."
 }
