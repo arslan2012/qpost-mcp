@@ -112,5 +112,11 @@
     "root_cause": "Nothing rejected a medialess post at creation. The form only guarded media for YouTube; TikTok and Instagram had no guard. The server accepted an empty mediaFiles array and stored the post, so it only blew up later inside the TikTok publisher with a cryptic message.",
     "fix": "Deployed 2026-08-18 (commit 79cbb1f). POST /api/post now returns 400 MEDIA_REQUIRED when no video/image is supplied — covers REST and MCP callers too, not just the form — and the form checks before uploading. Verified against production: medialess TikTok request returns 400 with a clear message; a post WITH media still returns 201 SCHEDULED with mediaUrl set.",
     "monitoring_gap": "The daily job tracked signups but NOT whether posts succeeded. A real user hit a hard failure and it went unnoticed for 6 days while runs reported 'no change'. Activation and failure are the signals that matter, not the signup count alone."
+  },
+  "DEPLOY_CAVEAT_2026_08_18": {
+    "issue": "Cloudflare serves STALE HTML after a deploy while the origin is already correct. Verified 2026-08-18: nginx (Host: qpost.dev -> 127.0.0.1:80) returned the new support@qpost.dev content, but https://qpost.dev did not, on every SSR page. cf-cache-status reported DYNAMIC and a ?cachebust= query did NOT bypass it, so it is not a plain URL-keyed cache — possibly the 'gfw' Cloudflare Worker in front of the zone.",
+    "not_affected": "Static files under /public (llms.txt, robots.txt) and API routes update immediately. The MEDIA_REQUIRED guard was confirmed live through Cloudflare while HTML was still stale.",
+    "implication": "Deploy verification MUST distinguish origin from edge. Checking https://qpost.dev alone can show a deploy as failed when it succeeded, or (worse) show old content as if nothing shipped. Verify the origin with: ssh ... \"curl -s -H 'Host: qpost.dev' http://127.0.0.1:80/<path>\"",
+    "fix_needed": "Purge the Cloudflare cache after HTML deploys, or add a Cache Rule bypassing cache for text/html. Requires Cloudflare dashboard access — the session was logged out at time of discovery and Claude cannot sign in."
   }
 }
