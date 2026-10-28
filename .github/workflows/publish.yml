@@ -13,6 +13,10 @@ name: Publish to npm and MCP Registry
 #   Repository:           qpost-mcp
 #   Workflow filename:    publish.yml
 #   Environment:          (leave blank)
+#   Permissions:          publish (not only "stage publish"; stage-only
+#                         fails with "403 OIDC permission denied")
+# or from the CLI:
+#   npm trust github qpost-mcp --file publish.yml --repo arslan2012/qpost-mcp --allow-publish
 #
 # To release: bump the version in package.json (and server.json), commit,
 # then push a matching tag:
@@ -75,6 +79,20 @@ jobs:
           else
             npm publish --access public
           fi
+
+      # The MCP registry validates the package against npm, and a fresh
+      # release takes a few seconds to appear there. Without this wait the
+      # v0.4.0 run published to npm, then failed on the registry with
+      # "version '0.4.0' was not found".
+      - name: Wait for npm to serve the new version
+        run: |
+          PKG="$(node -p "require('./package.json').version")"
+          for i in $(seq 1 30); do
+            npm view "qpost-mcp@$PKG" version >/dev/null 2>&1 && exit 0
+            sleep 5
+          done
+          echo "qpost-mcp@$PKG still not visible on npm after 150s" >&2
+          exit 1
 
       - name: Install mcp-publisher
         run: |
