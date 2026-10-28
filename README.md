@@ -53,6 +53,7 @@ Set `QPOST_BASE_URL` too if you're self-hosting QPost (defaults to `https://qpos
 | `create_post` | Create and publish (or schedule) a post, with video or image media from a URL or local path |
 | `list_posts` | List posts, optionally filtered by status/platform |
 | `get_post` | Get a single post by ID |
+| `get_post_stats` | Views, likes, comments and shares for a published post, plus its public URL |
 | `update_post` | Update a post's caption/schedule/timezone/status |
 | `delete_post` | Delete a post |
 | `retry_post` | Retry a failed post |
@@ -65,6 +66,9 @@ cannot reach your disk — it takes `mediaUrl`/`imageUrls`, or `mediaBase64`
 with an optional `mediaFilename` to set the MIME type.
 
 Full request/response shapes and per-platform metadata options (YouTube category/privacy, TikTok privacy level, Instagram media type, etc.) are documented at [qpost.dev/docs](https://qpost.dev/docs) — this server is a thin wrapper over that same REST API.
+
+Both the stdio server and the hosted endpoint speak MCP 2026-07-28 and still
+accept clients on 2025-era protocol versions. The stdio server needs Node 20+.
 
 ## Local development
 

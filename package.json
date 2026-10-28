@@ -1,6 +1,6 @@
 {
   "name": "qpost-mcp",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "MCP server for QPost — lets AI agents publish video and image posts to YouTube, TikTok, Instagram.",
   "mcpName": "io.github.arslan2012/qpost-mcp",
   "type": "module",
@@ -34,11 +34,11 @@
   },
   "homepage": "https://qpost.dev",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "zod": "^4.1.13"
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
