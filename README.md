@@ -4,7 +4,7 @@ MCP server for [QPost](https://qpost.dev) — lets AI agents schedule and publis
 
 ## Install
 
-Generate an API key from your QPost dashboard (Settings → API Keys), then pick one of the two options below.
+Connect your destination accounts and generate an API key at [QPost API Keys](https://qpost.dev/api-keys/), then pick one of the two options below.
 
 ### Hosted (recommended — nothing to install)
 
@@ -21,7 +21,7 @@ there is no session to manage.
 
 ### Local (stdio) via npx
 
-Use this if you self-host QPost or would rather run the server yourself:
+Use this to run the MCP bridge on your machine while QPost handles publishing:
 
 ```bash
 claude mcp add qpost -e QPOST_API_KEY=your_key_here -- npx -y qpost-mcp
@@ -43,7 +43,7 @@ claude mcp add qpost -e QPOST_API_KEY=your_key_here -- npx -y qpost-mcp
 }
 ```
 
-Set `QPOST_BASE_URL` too if you're self-hosting QPost (defaults to `https://qpost.dev`).
+`QPOST_BASE_URL` defaults to `https://qpost.dev`. Running this MCP bridge locally still uses QPost’s hosted publishing service.
 
 ## Tools
 
@@ -69,6 +69,12 @@ Full request/response shapes and per-platform metadata options (YouTube category
 
 Both the stdio server and the hosted endpoint speak MCP 2026-07-28 and still
 accept clients on 2025-era protocol versions. The stdio server needs Node 20+.
+
+## Publishing from n8n?
+
+Use the [tested n8n video-to-draft workflow](https://qpost.dev/guides/n8n-tiktok-instagram-youtube/?ref=github-mcp). It uses built-in HTTP Request nodes, works without a community package, and saves a draft before you publish. The page includes the downloadable JSON and the settings to change.
+
+For TikTok app-review restrictions, see [self-hosted publishing options](https://qpost.dev/guides/self-hosted-tiktok-publishing/?ref=github-mcp).
 
 ## Local development
 
